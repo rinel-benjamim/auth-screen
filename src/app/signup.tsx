@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 import {
+    Alert,
     Image,
     KeyboardAvoidingView,
     Platform,
@@ -14,13 +17,24 @@ import { Button } from '@/components/button';
 import { Input } from '@/components/input';
 
 export default function Signup() {
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    function handleSignup() {
+        //Here you put your signup logic
+        Alert.alert('Signup', 'Success!')
+    }
+
     return (
-        <KeyboardAvoidingView 
-            style={{flex: 1}}
-            behavior={Platform.select({ios: 'padding', android: 'height'})}
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.select({ ios: 'padding', android: 'height' })}
         >
-            <ScrollView 
-                contentContainerStyle={{flexGrow: 1}}
+            <ScrollView
+                contentContainerStyle={{ flexGrow: 1 }}
                 showsVerticalScrollIndicator={false}
             >
                 <View style={styles.container}>
@@ -29,20 +43,39 @@ export default function Signup() {
                         style={styles.ilustration}
                     />
 
-                    <Text style={styles.title}> Cadastrar </Text>
-                    <Text style={styles.subtitle}> Crie a sua conta com email e senha </Text>
+                    <Text style={styles.title}>Signup </Text>
+                    <Text style={styles.subtitle}>Create your account </Text>
 
                     <View style={styles.form}>
-                        <Input placeholder='Nome' />
-                        <Input placeholder='E-mail' keyboardType='email-address' />
-                        <Input placeholder='Senha' secureTextEntry />
-                        <Input placeholder='Confirmar Senha' secureTextEntry />
-                        <Button label='Cadastrar' />
+                        <Input
+                            placeholder='Name'
+                            onChangeText={setName}
+                        />
+                        <Input
+                            placeholder='E-mail'
+                            keyboardType='email-address'
+                            onChangeText={setEmail}
+                        />
+                        <Input
+                            placeholder='Password'
+                            secureTextEntry
+                            onChangeText={setPassword}
+                        />
+                        <Input
+                            placeholder='Confirm Password'
+                            secureTextEntry
+                            onChangeText={setConfirmPassword}
+                        />
+
+                        <Button
+                            label='Signup'
+                            onPress={handleSignup}                            
+                        />
                     </View>
 
                     <Text style={styles.footerText}>
-                        Já tem uma conta? {" "}
-                        <Link style={styles.footerLink} href='/'>Faça login </Link>
+                        Do you have an account? {" "}
+                        <Link style={styles.footerLink} href='/'>Login </Link>
                     </Text>
                 </View>
             </ScrollView>
@@ -55,7 +88,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fdfdfd",
         padding: 32,
-        
+
     },
 
     ilustration: {

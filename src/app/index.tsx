@@ -11,7 +11,7 @@ import {
     View
 } from 'react-native';
 
-import { Link, Redirect } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 
 import { Button } from '@/components/button';
 import { Input } from '@/components/input';
@@ -19,13 +19,12 @@ import { Input } from '@/components/input';
 export default function Index() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
 
-    function handleLogIn(){
-        if (!email.trim() || !password.trim()) {
-            return Alert.alert('Erro', 'Preencha os campos de email e senha para continuar');
-        }
-        
-        Alert.alert('Sucesso', 'Login realizado com sucesso!');
+    function handleLogIn() {
+        //Here you put your login logic
+        Alert.alert('Login', 'Success!')
+
     }
 
     return (
@@ -43,20 +42,20 @@ export default function Index() {
                         style={styles.ilustration}
                     />
 
-                    <Text style={styles.title}> Entrar </Text>
-                    <Text style={styles.subtitle}> Acesse sua conta com email e senha </Text>
+                    <Text style={styles.title}>Login </Text>
+                    <Text style={styles.subtitle}>Access your account </Text>
 
                     <View style={styles.form}>
                         <Input placeholder='E-mail' keyboardType='email-address' onChangeText={setEmail} />
 
-                        <Input placeholder='Senha' secureTextEntry onChangeText={setPassword} />
+                        <Input placeholder='Password' secureTextEntry onChangeText={setPassword} />
 
-                        <Button label='Entrar' onPress={handleLogIn} />
+                        <Button label='Login' onPress={handleLogIn} />
                     </View>
 
                     <Text style={styles.footerText}>
-                        Não tem uma conta? {" "}
-                        <Link style={styles.footerLink} href='/signup'>Cadastre-se aqui </Link>
+                        Don't have an account? {" "}
+                        <Link style={styles.footerLink} href='/signup'>Signup </Link>
                     </Text>
                 </View>
             </ScrollView>
