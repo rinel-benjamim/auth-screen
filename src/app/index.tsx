@@ -38,7 +38,7 @@ export default function Index() {
             >
                 <View style={styles.container}>
                     <Image
-                        source={require("@/assets/img1.svg")}
+                        source={require("@/assets/img1.png")}
                         style={styles.ilustration}
                     />
 
