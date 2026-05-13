@@ -39,7 +39,7 @@ export default function Signup() {
             >
                 <View style={styles.container}>
                     <Image
-                        source={require("@/assets/img2.png")}
+                        source={require("@/assets/img2.svg")}
                         style={styles.ilustration}
                     />
 
